@@ -8,6 +8,10 @@ echo "_________________________"
 echo "| Welcome to the game ! |"
 echo "|_______________________|"
 echo "  "
+echo "Best score : "
+cat scores.txt | sort -n | head -n 1
+
+echo "  "
 echo "What's your name human?"
 read name
 echo "  "
@@ -40,10 +44,5 @@ echo "  "
 echo "You're weak, do better next time."
 
 
-if [ ! -f "score.txt" ]
-then
-    touch score.txt
-    chmod 777 score.txt
-fi
 
-echo "$name $try" >> scores.txt
+echo "$try $name" >> scores.txt
