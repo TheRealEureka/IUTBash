@@ -4,7 +4,7 @@
 
 ### AUTHORS
 Tristan BELMONT  
-Kevin BULLY CIMBALURIA
+Kevin BULLY CIMBALURIA  
 Lucas FARRONI  
 -------------------------------------------------
 
