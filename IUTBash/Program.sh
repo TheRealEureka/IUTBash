@@ -8,8 +8,19 @@ echo "_________________________"
 echo "| Welcome to the game ! |"
 echo "|_______________________|"
 echo "  "
-echo "Best score : "
-cat scores.txt | sort -n | head -n 1
+
+#if the file exist
+if [ -f "scores.txt" ]
+then
+    echo "The best score is : "
+    cat scores.txt | sort -n | head -n 1
+    echo "  "
+else
+    echo "No score yet !"
+    echo "  "
+fi
+
+
 
 echo "  "
 echo "What's your name human?"
