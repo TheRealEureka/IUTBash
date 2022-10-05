@@ -7,5 +7,7 @@ scores:
 	cat scores.txt
 reset-scores:
 	rm -f scores.txt
-#scores-by:
-#	cat scores.txt | grep -i $(name)
+scores-by:
+	cat scores.txt | grep -i $(word 2, $(MAKECMDGOALS))
+	
+
