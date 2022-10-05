@@ -8,6 +8,9 @@ echo "_________________________"
 echo "| Welcome to the game ! |"
 echo "|_______________________|"
 echo "  "
+echo "What's your name human?"
+read name
+echo "  "
 echo "Guess a number between 1 and 100"
 echo "  "
 
@@ -35,3 +38,12 @@ echo "You guessed it !"
 echo "Your score is $try"
 echo "  "
 echo "You're weak, do better next time."
+
+
+if [ ! -f "score.txt" ]
+then
+    touch score.txt
+    chmod 777 score.txt
+fi
+
+echo "$name $try" >> scores.txt

@@ -39,3 +39,5 @@ bundles/
 vendor/pkg/
 pyenv
 Vagrantfile
+scores.txt
+score.txt
