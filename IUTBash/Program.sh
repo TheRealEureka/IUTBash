@@ -100,7 +100,9 @@ then
     echo "Your score is $try"
     echo "  "
     echo "You're weak, do better next time."
-    if [ ${cat scores.txt | wc -l} -lt "$max_score" ]
+    lignes=$(wc -l < scores.txt)
+    echo "lignes $lignes"
+    if [ $lignes -lt "$max_score" ]
     then
         echo "$name $try" >> scores.txt
     else
