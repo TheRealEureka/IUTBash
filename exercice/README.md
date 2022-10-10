@@ -5,7 +5,8 @@
 ### AUTHORS
 Tristan BELMONT  
 Kevin BULLY CIMBALURIA  
-Lucas FARRONI  
+Lucas FARONNI  
+Clément PERRIN
 -------------------------------------------------
 
 
