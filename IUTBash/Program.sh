@@ -110,11 +110,11 @@ then
         echo "$name $try" >> scores.txt
 
     fi
-fi    
-
-echo "  "
-echo "  "
-echo "You've reached the maximum number of try, $name. You're a failure."
+else  
+    echo "  "
+    echo "  "
+    echo "You've reached the maximum number of try, $name. You're a failure."
+fi
 
 sort scores.txt -n -o scores.txt
 
