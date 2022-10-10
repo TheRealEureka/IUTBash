@@ -12,7 +12,6 @@ echo "| Welcome to the game ! |"
 echo "|_______________________|"
 echo "  "
 
-
 if [ -f "scores.txt" ]
 then
     echo "The best score is : "
@@ -28,12 +27,19 @@ fi
 echo "  "
 echo "What's your name human?"
 read name
+while [ "$max_username_length" -lt ${#name} ]
+do
+    echo "Your name is too long !"
+    echo "What's your name human?"
+    read name
+done
 echo "  "
 echo "Guess a number between 1 and 100"
 echo "  "
 
 read guess
 
+#get length of $name
 #if guess is not a number
 while ! [[ "$guess" =~ ^[0-9]+$ ]]
 do
@@ -72,9 +78,14 @@ then
     echo "Your score is $try"
     echo "  "
     echo "You're weak, do better next time."
+    if [ ${cat scores.txt | wc -l} -lt "$max_score" ]
+    then
+        echo "$name $try" >> scores.txt
+    else
+        cat scores.txt | sort -n | head -n "${max_score+1}" > scores.txt
+        echo "$name $try" >> scores.txt
 
-
-    echo "$try $name" >> scores.txt
+    fi
 fi    
 
 echo "  "
