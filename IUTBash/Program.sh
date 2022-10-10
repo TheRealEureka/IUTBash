@@ -1,5 +1,8 @@
 #!/bin/bash
 
+. ./options.config
+
+
 num=$((1 + $RANDOM % 100))
 try=0
 
@@ -41,9 +44,9 @@ done
 
 
 
-while [ $guess -ne $num ]
+while [ "$guess" -ne $num ] && [ $try -lt "$max_try" ]
 do
-    if [ $guess -lt $num ]
+    if [ "$guess" -lt $num ]
     then
         echo "Too low !"
         try=$((try+1))
@@ -59,16 +62,25 @@ do
             read guess
         done
 done
-try=$((try+1))
-echo "  "
-echo "  "
-echo "You guessed it !"
-echo "Your score is $try"
-echo "  "
-echo "You're weak, do better next time."
+
+if [ $try -lt "$max_try" ]
+then
+    try=$((try+1))
+    echo "  "
+    echo "  "
+    echo "You guessed it !"
+    echo "Your score is $try"
+    echo "  "
+    echo "You're weak, do better next time."
 
 
-echo "$try $name" >> scores.txt
+    echo "$try $name" >> scores.txt
+fi    
+
+echo "  "
+echo "  "
+echo "You've reached the maximum number of try, $name. You're a failure."
+
 sort scores.txt -n -o scores.txt
 
 echo "  "
@@ -82,11 +94,11 @@ echo "  "
 
 echo "You want to play again ? (y/n)"
 read answer
-if [ $answer = "y" ]
+if [ "$answer" = "y" ]
 then
     ./Program.sh
 else
-    if [ $answer = "n"]
+    if [ "$answer" = "n" ]
     then
         echo "Goodbye $name."
     else
