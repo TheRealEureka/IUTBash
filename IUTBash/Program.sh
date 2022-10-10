@@ -3,7 +3,6 @@
 . ./options.config
 
 
-num=$((1 + $RANDOM % 100))
 try=0
 
 
@@ -33,8 +32,30 @@ do
     echo "What's your name human?"
     read name
 done
+
 echo "  "
-echo "Guess a number between 1 and 100"
+echo "What's difficulty do you want ? (1,2 or 3)"
+read difficulty
+
+while [ "$difficulty" -lt 1 ] || [ "$difficulty" -gt 3 ]
+do
+    echo "Please enter a number between 1 and 3"
+    echo "What's difficulty do you want ? (1,2 or 3)"
+    read difficulty
+done
+
+if [ "$difficulty" -eq 1 ]
+then
+    max=100
+elif [ "$difficulty" -eq 2 ]
+then
+    max=500
+else
+    max=1000
+fi
+
+echo "  "
+echo "Guess a number between 1 and $max"
 echo "  "
 
 read guess
@@ -48,6 +69,7 @@ do
     read guess
 done
 
+num=$((1 + $RANDOM % $max))
 
 
 while [ "$guess" -ne $num ] && [ $try -lt "$max_try" ]
