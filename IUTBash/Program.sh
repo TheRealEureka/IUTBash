@@ -1,5 +1,11 @@
 #!/bin/bash
-
+#check if file exists and is not empty
+if [ ! -s ./options.config ]
+then 
+    echo "max_try=10" >> options.config
+    echo "max_scores=5" >> options.config
+    echo "max_username_length=10" >> options.config
+fi
 . ./options.config
 
 
@@ -102,14 +108,12 @@ then
     echo "You're weak, do better next time."
     lignes=$(wc -l < scores.txt)
     echo "lignes $lignes"
-    if [ $lignes -lt "$max_score" ]
+    if [ $lignes -gt "$max_score" ]
     then
-        echo "$name $try" >> scores.txt
-    else
         cat scores.txt | sort -n | head -n "${max_score+1}" > scores.txt
-        echo "$name $try" >> scores.txt
-
     fi
+    echo "$name $try" >> scores.txt
+
 else  
     echo "  "
     echo "  "
