@@ -120,7 +120,7 @@ then
     then
         cat scores.txt | sort -n | head -n "${max_score+1}" > scores.txt
     fi
-    echo "$name $try" >> scores.txt
+    echo "$try $name" >> scores.txt
 
 else  
     echo "  "
