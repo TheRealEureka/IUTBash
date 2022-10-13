@@ -37,7 +37,9 @@ document.getElementById('start').addEventListener('click',function (){
             document.getElementById('result').innerHTML = "Le nombre est plus grand, Choisi un nombre entre 1 et 99";
         } else {
             console.log("Bravo tu as trouvé le nombre mystère");
-            document.getElementById('game').innerHTML = '<p>Bravo tu as trouvé le nombre mystère</p>';
+            document.getElementById('result').innerHTML = '<p>Bravo tu as trouvé le nombre mystère</p>';
+            document.getElementById('submit').style.display = 'none';
+            document.getElementById('numberInput').style.display = 'none';
         }
     });
 });
