@@ -7,16 +7,25 @@
 </head>
 <body>
 
-<h1>SUPER JEU AHA</h1>
 
-<div class="game">
-    <p id="name">Ton nom stp :</p>
-    <input type="text" id="nameInput">
-    <button id="start">Start</button>
+<div class="container">
+    <h1>SUPER JEU AHA</h1>
+    <div class="game">
+
+    <p id="name">Your Pseudo</p>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <button type="button" class="btn btn-primary"id="start">Start</button>
+        </div>
+        <input type="text"id="nameInput" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+    </div>
+
+    <div id="PlayerName"></div>
+
+    </div>
 </div>
 
-<div class="SCORE"><div id="PlayerName"></div>
-    </div>
+
 
 
 <script type="module" src="./script.js"></script>

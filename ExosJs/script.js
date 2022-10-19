@@ -34,8 +34,12 @@ function save(obj) {
 document.getElementById('start').addEventListener('click',function (){
     name = document.getElementById('nameInput').value;
     document.getElementsByClassName('game')[0].innerHTML = '<p>Bonjour '+name+'</p><p id="result">Choisi un nombre entre 1 et 99</p>\n' +
-        '<input type="number" id="numberInput">' +
-        '<button id="submit">Submit</button>';
+    '<div class="input-group mb-3">'+
+    '<div class="input-group-prepend">'+
+    '<button class="btn btn-outline-secondary" type="button"id="submit">Submit</button>'+
+    '</div>'+
+    '<input type="number"id="numberInput" className="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">'+
+    ' </div>'
 
     document.getElementById('submit').addEventListener('click',function (){
         console.log('submit');
