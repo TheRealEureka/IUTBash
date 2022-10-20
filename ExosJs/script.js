@@ -11,8 +11,12 @@ let numRandom = Math.floor(Math.random() * 100) + 1;
 let Bestscore = { name : name ,
     score : 0
 }
-let tab = localStorage.getItem("scoreFile");
+let tab = [];
 
+if(localStorage.getItem('scoreFile')!==null){
+    tab = JSON.parse(localStorage.getItem('scoreFile'))
+    console.log(tab)
+}
 //document.getElementById('btn').addEventListener('click',function (){
 //let message = prompt("What's your name human?")
 //    while (message.length >= 10) {
@@ -28,7 +32,6 @@ function save(obj) {
         return a.score - b.score;
     });
     localStorage.setItem("scoreFile", JSON.stringify(tab));
-    console.log(localStorage.)
 }
 
 
@@ -61,17 +64,16 @@ document.getElementById('start').addEventListener('click',function (){
             document.getElementById('numberInput').style.display = 'none';
 
             save(Bestscore);
-            //document.getElementById("PlayerName").innerText = Bestscore.name+" "+Bestscore.score;
-            //document.getElementById("PlayerName").classList.toggle("hidden");
+
 
             let data = localStorage.getItem("scoreFile");
             let TabScore = JSON.parse(data);
-
-
-           document.getElementById("PlayerName").innerText = TabScore.forEach((e) => {
-              console.log(`${e.score} ${e.name}`)
-           });
-
+            console.log(TabScore)
+            let txt = "";
+            TabScore.forEach((e) => {
+               txt +=`${e.score} ${e.name} <br>`
+            });
+            document.getElementById("PlayerName").innerHTML = txt;
         }
     });
 });
