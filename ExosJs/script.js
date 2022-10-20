@@ -70,11 +70,13 @@ document.getElementById('start').addEventListener('click',function (){
             let TabScore = JSON.parse(data);
             console.log(TabScore)
             let txt = "";
+            let i = 0;
             TabScore.forEach((e) => {
-               txt +=`${e.score} ${e.name} <br>`
+                txt +='<li class="list-group-item">' +  `${e.score} ${e.name} <br>` + '</li>'
             });
-            document.getElementById("PlayerName").innerHTML = txt;
+            document.getElementById("list").innerHTML = txt;
         }
     });
 });
+
 
