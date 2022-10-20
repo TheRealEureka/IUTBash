@@ -11,7 +11,7 @@ let numRandom = Math.floor(Math.random() * 100) + 1;
 let Bestscore = { name : name ,
     score : 0
 }
-let tab = [];
+let tab = localStorage.getItem("scoreFile");
 
 //document.getElementById('btn').addEventListener('click',function (){
 //let message = prompt("What's your name human?")
@@ -23,10 +23,12 @@ let tab = [];
 
 function save(obj) {
     tab.push(obj);
+    console.log('saved')
     tab.sort((a ,b) => {
         return a.score - b.score;
     });
     localStorage.setItem("scoreFile", JSON.stringify(tab));
+    console.log(localStorage.)
 }
 
 
@@ -34,12 +36,9 @@ function save(obj) {
 document.getElementById('start').addEventListener('click',function (){
     name = document.getElementById('nameInput').value;
     document.getElementsByClassName('game')[0].innerHTML = '<p>Bonjour '+name+'</p><p id="result">Choisi un nombre entre 1 et 99</p>\n' +
-    '<div class="input-group mb-3">'+
-    '<div class="input-group-prepend">'+
-    '<button class="btn btn-outline-secondary" type="button"id="submit">Submit</button>'+
-    '</div>'+
-    '<input type="number"id="numberInput" className="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">'+
-    ' </div>'
+    '<div class="input-group mb-3">'+ '<div class="input-group-prepend">'+
+    '<button class="btn btn-success" type="button"id="submit">Submit</button>'+ '</div>'+
+    '<input type="number"id="numberInput" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">'+ '</div>'
 
     document.getElementById('submit').addEventListener('click',function (){
         console.log('submit');
@@ -62,11 +61,16 @@ document.getElementById('start').addEventListener('click',function (){
             document.getElementById('numberInput').style.display = 'none';
 
             save(Bestscore);
+            //document.getElementById("PlayerName").innerText = Bestscore.name+" "+Bestscore.score;
+            //document.getElementById("PlayerName").classList.toggle("hidden");
+
             let data = localStorage.getItem("scoreFile");
             let TabScore = JSON.parse(data);
-            document.getElementById("PlayerName").innerHTML = TabScore.forEach((e) => {
-                console.log(`${e.score} ${e.name}`)
-            });
+
+
+           document.getElementById("PlayerName").innerText = TabScore.forEach((e) => {
+              console.log(`${e.score} ${e.name}`)
+           });
 
         }
     });
