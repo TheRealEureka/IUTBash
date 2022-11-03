@@ -7,7 +7,6 @@ function controlNumber(x) {
     }
     return number;
 }
-
 let numRandom = 0;
 let firstMessage = prompt("Choose the level of difficulty 1 : Easy , 2 : Moderate , 3 : NIGHTMARE ");
 let level = "";
@@ -42,13 +41,6 @@ if (localStorage.getItem('scoreFile') !== null) {
     console.log(tab)
 }
 
-/*document.getElementById('btn').addEventListener('click',function (){
-let message = prompt("What's your name human?")
-    while (message.length >= 10 && typeof message === 'string') {
-        message = prompt("your name is too long , you must write a peusdo of 10 characters maximum");
-    }
-    console.log(message)
-});*/
 
 function save(obj) {
     tab.push(obj);
@@ -59,17 +51,10 @@ function save(obj) {
     localStorage.setItem("scoreFile", JSON.stringify(tab));
 }
 
-/*
-const input = document.querySelector("input");
-input.addEventListener("keyup", (event) => {
-    if (event.key === "Enter") {
-        console.log('Enter key pressed')
-    }
-});*/
 
 document.getElementById('start').addEventListener('click', function () {
     name = document.getElementById('nameInput').value;
-    document.getElementsByClassName('game')[0].innerHTML = '<p>Bonjour ' + name + '</p><p id="result">Choisi un nombre entre 1 et ' + level + '</p>\n' +
+    document.getElementsByClassName('game')[0].innerHTML = '<p>Hello ' + name + '</p><p id="result">Choose a number between 1 and ' + level + '</p>\n' +
         '<div class="input-group mb-3">' + '<div class="input-group-prepend">' +
         '<button class="btn btn-success" type="button"id="submit">Submit</button>' + '</div>' +
         '<input type="number"id="numberInput" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">' + '</div>'
@@ -81,16 +66,17 @@ document.getElementById('start').addEventListener('click', function () {
         Bestscore.score += 1;
         console.log(numRandom);
         if (number > numRandom) {
-            document.getElementById('result').innerHTML = "Le nombre est plus petit, Choisi un nombre entre 1 et " + level;
-            console.log("Le nombre est plus petit, Choisi un nombre entre 1 et " + level);
+            document.getElementById('result').innerHTML = "The number is smaller, Choose a number between 1 and" + level;
+            console.log("The number is smaller, Choose a number between 1 and " + level);
             Bestscore.score += 1;
         } else if (number < numRandom) {
-            console.log("Le nombre est plus grand, Choisi un nombre entre 1 et "+ level);
-            document.getElementById('result').innerHTML = "Le nombre est plus grand, Choisi un nombre entre 1 et " + level;
+            console.log("The number is bigger, Choose a number between 1 and "+ level);
+            document.getElementById('result').innerHTML = "The number is bigger, Choose a number between 1 and " + level;
             Bestscore.score += 1;
         } else {
-            console.log("Bravo tu as trouvé le nombre mystère");
-            document.getElementById('result').innerHTML = '<p>Bravo tu as trouvé le nombre mystère</p>';
+            console.log("Congratulations you found the mystery number");
+            document.getElementById('result').innerHTML = '<p>Congratulations you found the mystery number\n' +
+                '\n</p>';
             document.getElementById('submit').style.display = 'none';
             document.getElementById('numberInput').style.display = 'none';
 
