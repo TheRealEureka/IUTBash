@@ -4,3 +4,4 @@ options.config
 .idea/
 *.xml
 *.iml
+node_modules
