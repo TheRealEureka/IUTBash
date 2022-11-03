@@ -1,3 +1,5 @@
 
 scores.txt
 options.config
+node_modules
+.idea
