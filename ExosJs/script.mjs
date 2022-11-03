@@ -1,3 +1,6 @@
+
+
+
 function controlNumber(x) {
     let number = parseInt(x);
     let test = Number.isInteger(number);
